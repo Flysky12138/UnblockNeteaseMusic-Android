@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UnBlockMusic</string>
+    <string name="node">node app.js</string>
+    <string name="iptables">iptables -t nat -S OUTPUT</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+</resources>
