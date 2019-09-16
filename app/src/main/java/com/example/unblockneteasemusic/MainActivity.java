@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         command = new Command(0, State) {
             @Override
             public void commandOutput(int id, String line) {
-                if (line != "YES") { //这里有点反常,是line=YES反而能通过
+                if (line != "YES") {
                     try {
                         RootTools.closeAllShells();
                     } catch (IOException e) {
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         Command command = new Command(0, State) {
             @Override
             public void commandOutput(int id, String line) {
-                if (line != "YES") { //这里有点反常,是line=YES反而能通过
+                if (line != "YES") {
                     new ToastText(MainActivity.this, "程序正在后台运行");
                 }
             }
