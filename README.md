@@ -1,4 +1,4 @@
 # UnblockNeteaseMusic-Android
-## Based on：https://github.com/nondanee/UnblockNeteaseMusic
-### Need root and internet.Running (It don't need to stay in the background),then restart the NetEase cloud music app
+## 基于：https://github.com/nondanee/UnblockNeteaseMusic
+### 需要ROOT和网络，运行后不需要留在后台，然后再重启网易云音乐应用程序。PS：打死不更新系列[手动滑稽]
 ![](https://github.com/Flysky12138/UnblockNeteaseMusic-Android/raw/master/%E5%9B%BE%E7%89%87/running.png)
