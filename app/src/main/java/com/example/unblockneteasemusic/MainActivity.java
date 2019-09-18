@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //复制核心文件文件到/data/data/*/code,权限0777
         Copy copy = new Copy();
-        copy.copyFilesAssets(MainActivity.this, "UnblockNeteaseMusic-0.15.1", codePath);
+        copy.copyFilesAssets(MainActivity.this, "UnblockNeteaseMusic-0.19.3", codePath);
         copy.copyFilesAssets(MainActivity.this, "code", codePath);
         copy.copyFilesAssets(MainActivity.this, "shell", codePath);
         Command command = new Command(0, "cd " + codePath, "chmod 0777 *");
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void commandOutput(int id, String line) {
                 TextView tx2 = findViewById(R.id.tx2);
-                tx2.append(line + "\n\n");
+                tx2.append(line + "\n");
             }
         };
         try {
