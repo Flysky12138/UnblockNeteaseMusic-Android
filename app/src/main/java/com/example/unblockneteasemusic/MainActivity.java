@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void commandOutput(int id, String line) {
                 TextView tx2 = findViewById(R.id.tx2);
-                tx2.append(line + "\n\n");
+                tx2.append(line + "\n");
             }
         };
         RootTools.getShell(true).add(command);
