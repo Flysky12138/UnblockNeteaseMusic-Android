@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     final String ProxyStart = "./proxy.sh start";
     final String ProxyState = "./proxy.sh";
     final String ProxyStop = "./proxy.sh stop";
-    final String string = "1、软件运行需要联网！\n";
+    final String string = "软件运行需要联网！\n";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //复制核心文件文件到/data/data/*/code,权限0777
         Copy copy = new Copy();
-        copy.copyFilesAssets(MainActivity.this, "UnblockNeteaseMusic-0.19.3", codePath);
+        copy.copyFilesAssets(MainActivity.this, "UnblockNeteaseMusic", codePath);
         copy.copyFilesAssets(MainActivity.this, "code", codePath);
         copy.copyFilesAssets(MainActivity.this, "shell", codePath);
         Command command = new Command(0, "cd " + codePath, "chmod 0777 *");
