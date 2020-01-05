@@ -10,13 +10,14 @@ import com.stericson.RootShell.exceptions.RootDeniedException;
 import com.stericson.RootShell.execution.Command;
 import com.stericson.RootTools.RootTools;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 public class MainActivity extends AppCompatActivity {
 
     final String codePath = "/data/data/com.example.unblockneteasemusic/code";
-    final String Start = "./node app.js";
+    final String Start = "./node app.js -p 8080";
     final String State = "[ \"`pgrep node`\" != \"\" ] && echo YES";
     final String Stop = "killall -9 node >/dev/null 2>&1";
     final String ProxyStart = "./proxy.sh start";
@@ -39,15 +40,18 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
         //复制核心文件文件到/data/data/*/code,权限0777
-        Copy copy = new Copy();
-        copy.copyFilesAssets(MainActivity.this, "UnblockNeteaseMusic", codePath);
-        copy.copyFilesAssets(MainActivity.this, "code", codePath);
-        copy.copyFilesAssets(MainActivity.this, "shell", codePath);
-        Command command = new Command(0, "cd " + codePath, "chmod 0777 *");
-        try {
-            RootTools.getShell(true).add(command);
-        } catch (IOException | TimeoutException | RootDeniedException e) {
-            e.printStackTrace();
+        File folder = new File(codePath);
+        if (!folder.exists() && !folder.isDirectory()) {
+            Copy copy = new Copy();
+            copy.copyFilesAssets(MainActivity.this, "UnblockNeteaseMusic", codePath);
+            copy.copyFilesAssets(MainActivity.this, "code", codePath);
+            copy.copyFilesAssets(MainActivity.this, "shell", codePath);
+            Command command = new Command(0, "cd " + codePath, "chmod 0777 *");
+            try {
+                RootTools.getShell(true).add(command);
+            } catch (IOException | TimeoutException | RootDeniedException e) {
+                e.printStackTrace();
+            }
         }
         //设置滚动条
         TextView tx1 = findViewById(R.id.tx1);
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        command = new Command(0, State) {
+        Command command = new Command(0, State) {
             @Override
             public void commandOutput(int id, String line) {
                 if (line != "YES") {
