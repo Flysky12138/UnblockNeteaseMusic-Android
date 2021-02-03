@@ -17,9 +17,12 @@ redsocks {
    type = http-relay;
 }" > ./redsocks.conf
     re=$(grep -m1 -i "com.netease.cloudmusic" /data/system/packages.list | cut -d' ' -f2)
+    re2=$(grep -m1 -i "com.netease.cloudmusic.lite" /data/system/packages.list | cut -d' ' -f2)
     ./redsocks -c ./redsocks.conf
     iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner $re -m tcp --dport 80 -j REDIRECT --to-ports 8123
     iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner $re -m tcp --dport 443 -j REDIRECT --to-ports 8124
+    iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner $re2 -m tcp --dport 80 -j REDIRECT --to-ports 8123
+    iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner $re2 -m tcp --dport 443 -j REDIRECT --to-ports 8124
 }
 stop() {
     iptables -t nat -F OUTPUT
