@@ -17,7 +17,7 @@ import java.util.concurrent.TimeoutException;
 public class MainActivity extends AppCompatActivity {
 
     final String codePath = "/data/data/com.example.unblockneteasemusic/code";
-    final String Start = "./node app.js -p 8080";
+    final String Start = "./node app.js -p 8080 -o kuwo migu qq";
     final String State = "[ \"`pgrep node`\" != \"\" ] && echo YES";
     final String Stop = "killall -9 node >/dev/null 2>&1";
     final String ProxyStart = "./proxy.sh start";
